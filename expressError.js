@@ -20,7 +20,16 @@
     }
   }
 
+  /** 400 BAD REQUEST error. */
+
+class BadRequestError extends ExpressError {
+    constructor(message = "Bad Request") {
+      super(message, 400);
+    }
+  }
+
   module.exports = {
       ExpressError,
-      NotFoundError
+      NotFoundError,
+      BadRequestError
   };
