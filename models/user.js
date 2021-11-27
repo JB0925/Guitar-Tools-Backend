@@ -16,7 +16,7 @@ class User {
              WHERE username = $1`,
              [username]
         );
-
+        
         if (duplicateCheck.rows[0]) throw new BadRequestError("This username is taken");
         
         const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
