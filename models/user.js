@@ -36,7 +36,7 @@ class User {
 
     static async authenticate({ username, password }) {
         const result = await db.query(
-            `SELECT username, password
+            `SELECT id, username, password
              FROM users
              WHERE username = $1`,
              [username]
@@ -53,6 +53,7 @@ class User {
 
         throw new BadRequestError("Invalid username / password");
     };
+
 };
 
 module.exports = User;

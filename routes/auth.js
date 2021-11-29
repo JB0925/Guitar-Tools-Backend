@@ -29,8 +29,9 @@ router.post("/login", async function(req, res, next) {
             throw new BadRequestError(errors);
         }
         const user = await User.authenticate(req.body);
+        const { id } = user;
         const token = createToken(user);
-        return res.json({ token });
+        return res.json({ token, id });
     } catch (error) {
         return next(error);
     }
