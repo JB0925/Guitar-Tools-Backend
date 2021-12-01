@@ -54,6 +54,31 @@ class User {
         throw new BadRequestError("Invalid username / password");
     };
 
+    static async getHighScore(id) {
+        const result = await db.query(
+            `SELECT high_score
+             FROM users
+             WHERE id = $1`,
+             [id]
+        );
+
+        const { high_score } = result.rows[0];
+        return high_score;
+    };
+
+    static async setHighScore(id, newHighScore) {
+        const result = await db.query(
+            `UPDATE users
+             SET high_score = $1
+             WHERE id = $2
+             RETURNING high_score`,
+             [newHighScore, id]
+        );
+
+        const { high_score } = result.rows[0];
+        return high_score;
+    };
+
 };
 
 module.exports = User;

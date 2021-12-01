@@ -3,6 +3,7 @@ const cors = require("cors");
 const { AuthenticateJWT } = require("./helpers/tokens");
 const authRoutes = require("./routes/auth");
 const guitaristRoute = require("./routes/guitarists");
+const scoresRoutes = require("./routes/users");
 const { ExpressError, NotFoundError } = require("./expressError");
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/guitarist", guitaristRoute);
+app.use("/users", scoresRoutes);
 
 app.use((req, res, next) => {
     return next(new NotFoundError());
