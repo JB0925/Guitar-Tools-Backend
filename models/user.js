@@ -26,7 +26,7 @@ class User {
              (username, password)
              VALUES
              ($1, $2)
-             RETURNING username, password`,
+             RETURNING id, username, password`,
              [username, hashedPassword]
         );
         

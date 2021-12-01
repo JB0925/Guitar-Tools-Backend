@@ -15,7 +15,8 @@ router.post("/signup", async function(req, res, next) {
         }
         const newUser = await User.register(req.body);
         const token = createToken(newUser);
-        return res.status(201).json({ token });
+        const { id } = newUser;
+        return res.status(201).json({ token, id });
     } catch (error) {
         return next(error);
     }
