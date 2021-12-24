@@ -55,6 +55,16 @@ class User {
     };
 
     static async getHighScore(id) {
+        const userQuery = await db.query(
+          `SELECT username
+           FROM users
+           WHERE id = $1`,
+           [id]
+        );
+
+        const user = userQuery.rows[0];
+        if (!user) throw new BadRequestError("No user with this id");
+
         const result = await db.query(
             `SELECT high_score
              FROM users
@@ -67,6 +77,16 @@ class User {
     };
 
     static async setHighScore(id, newHighScore) {
+        const userQuery = await db.query(
+            `SELECT username
+             FROM users
+             WHERE id = $1`,
+             [id]
+        );
+  
+        const user = userQuery.rows[0];
+        if (!user) throw new BadRequestError("No user with this id");
+
         const result = await db.query(
             `UPDATE users
              SET high_score = $1

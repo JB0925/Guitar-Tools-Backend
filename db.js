@@ -1,5 +1,7 @@
 "use strict";
-/** Database setup for jobly. */
+/** Database setup for the Guitar App. */
+require("dotenv").config();
+
 const { Client } = require("pg");
 const { getDatabaseUri } = require("./config");
 
