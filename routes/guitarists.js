@@ -13,7 +13,7 @@ router.get("/:name", async(req, res, next) => {
         params: { s: name },
         headers: {
             'x-rapidapi-host': 'theaudiodb.p.rapidapi.com',
-            'x-rapidapi-key': AUDIODB_API_KEY
+            'x-rapidapi-key': process.env.REACT_APP_API_KEY || AUDIODB_API_KEY
         }
     };
     
