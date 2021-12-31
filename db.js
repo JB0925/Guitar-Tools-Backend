@@ -3,7 +3,7 @@
 require("dotenv").config();
 
 const { Client } = require("pg");
-const { getDatabaseUri } = require("./config");
+const { getDatabaseUri } = process.env.DATABASE_URL || require("./config");
 
 let db;
 

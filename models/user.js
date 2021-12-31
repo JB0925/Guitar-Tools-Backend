@@ -6,7 +6,7 @@ const {
   BadRequestError,
 } = require("../expressError");
 
-const { BCRYPT_WORK_FACTOR } = require("../config.js");
+const { BCRYPT_WORK_FACTOR } = process.env.BCRYPT_WORK_FACTOR || require("../config.js");
 
 class User {
     static async register({ username, password }) {

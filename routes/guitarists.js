@@ -1,7 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const axios = require("axios");
-const { AUDIODB_API_KEY } = require("../config");
+const { AUDIODB_API_KEY } = process.env.AUDIODB_API_KEY || require("../config");
 const { BadRequestError } = require("../expressError");
 
 router.get("/:name", async(req, res, next) => {
