@@ -1,11 +1,5 @@
 const jwt = require("jsonwebtoken");
-// const { SECRET_KEY } = process.env.SECRET_KEY || require("../config");
-// if (process.env.NODE_ENV === "production") {
-//   const SECRET_KEY = process.env.SECRET_KEY;
-// } else {
-//   const { SECRET_KEY } = require("../config");
-// }
-const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY || "super-secret";
 
 /** return signed JWT from user data. */
 
