@@ -6,7 +6,7 @@ const {
   BadRequestError,
 } = require("../expressError");
 
-const BCRYPT_WORK_FACTOR = process.env.BCRYPT_WORK_FACTOR || 12;
+const BCRYPT_WORK_FACTOR = +process.env.BCRYPT_WORK_FACTOR || 12;
 
 class User {
     static async register({ username, password }) {
